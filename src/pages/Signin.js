@@ -10,6 +10,7 @@ import {
   IonGrid,
   IonImg,
   IonCol,
+  useIonLoading,
   useIonAlert,
   useIonToast,
 } from "@ionic/react";
@@ -22,99 +23,7 @@ import {  useState } from "react";
 import { alert } from "ionicons/icons";
 import { Link } from "react-router-dom";
 const SignIn = () => {
-//   const [user, setUser] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-//   const [emailError, setEmailError] = useState("");
-//   const [passwordError, setPasswordError] = useState("");
 
-//   const [present, dismiss] = useIonToast();
-
-//   let router = useIonRouter();
-
- 
-//   const handleToast = async (err) => {
-//   present({
-//     duration: 1000,
-//     message:err ,
-//     color: "light",
-//     translucent: false,
-//       showCloseButton: true,
-//   })
-
-// };
-//   const clearInputs = () => {
-//     setEmail("");
-//     setPassword("");
-//   };
-//   const clearErrors = () => {
-//     setEmailError("");
-//     setPasswordError("");
-//   };
-//   const authlistener = () => {
-//     firebaseApp.auth().onAuthStateChanged((user) => {
-//       if (user) {
-//         clearInputs();
-//         setUser(user);
-//       } 
-//       else if(
-//         user == null ||
-//       user === "" ||
-//       email == null ||
-//       email === "" ||
-//       password == null ||
-//       password === ""
-//       )
-//       {
-//         handleToast("email and password should not be empty")
-//       }
-//       else {
-//         setUser("");
-//       }
-//     });
-//   };
-//   useEffect(() => {
-//     authlistener();
-//   }, []);
-
-//   const handleSignin = () => {
-//     clearErrors();
-
-//     firebaseApp
-//       .auth()
-//       .signInWithEmailAndPassword(email, password)
-//       .then(() => {
-//         handleToast("signedin successfully");
-//         router.push("/dashboard");
-        
-//       })
-
-//       .catch((err) => {
-//         // handleToast(emailError)
-//         switch (err.code) {
-//           case "auth/invalid-email":
-//           case "auth/user-disabled":
-//           case "auth/user-not-found":
-//             // setEmailError(err.message);
-//             handleToast(err);
-//             break;
-//           case "auth/wrong-password":
-//             // setPasswordError(err.message);
-//             handleToast(err);
-//             break;
-           
-//         } 
-//       }, 
-       
-//       );
-//       clearInputs(); 
-//   };
-  // const handleSignout=() =>{
-  //   firebaseApp.auth().signOut().then(()=>{router.push('/home');
-  // }).then(()=>{
-  //   handleToast("signout successfully");
-  // });
-  // };
  
   const { signIn, user } = UserAuth();
   const [email, setEmail] = useState("");
@@ -122,6 +31,7 @@ const SignIn = () => {
   const [error, setError] = useState("");
   const [present, dismiss] = useIonToast();
   const [presentAlert] = useIonAlert();
+  const [showPresent,showDismiss] = useIonLoading();
 
   async function handleButtonClick(message) {
     present({
@@ -165,6 +75,13 @@ const SignIn = () => {
       handleButtonClick("Please enter correct email");
     } else {
       try {
+
+        showPresent({
+          message: 'Please wait...',
+          duration: 1000,
+    
+        })
+
         await signIn(email, password);
         handleButtonClick("Login successful");
         clearInputs();
@@ -172,6 +89,8 @@ const SignIn = () => {
         router.push("/dashboard");
       } catch (e) {
         setError(e.message);
+        showDismiss();
+        clearInputs();
         handleAlert(e.message);
       }
     }
@@ -233,7 +152,7 @@ const SignIn = () => {
           <IonRow className="text">
             <IonLabel className="text3">
               Don't have account ?{" "}
-              <Link to="/signup" className="link">
+              <Link to="/signup" className="link"  onClick={clearInputs}>
                 Sign Up
               </Link>{" "}
             </IonLabel>
