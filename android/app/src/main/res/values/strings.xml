@@ -4,4 +4,5 @@
     <string name="title_activity_main">SKYMusic</string>
     <string name="package_name">com.skymusicptg.app</string>
     <string name="custom_url_scheme">com.skymusicptg.app</string>
+    <string name="server_client_id">969316985179-52g0d37kfl6n6c98di65m603o4j2hchq.apps.googleusercontent.com</string>
 </resources>

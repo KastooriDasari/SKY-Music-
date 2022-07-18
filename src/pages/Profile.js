@@ -10,64 +10,21 @@ import {
     IonTabButton,
     IonTabBar,
     IonButton,
-    IonList,
-    IonItem,
-    IonGrid,
-    IonImg,
-    IonCard,
-    IonInfiniteScroll,
-    IonInfiniteScrollContent,
-    useIonViewWillEnter
-  
+   
   } from "@ionic/react";
   import {
     home,
     albumsOutline,
     heart,
     personAddOutline,
-    menu,
+  
     arrowBackOutline
   } from "ionicons/icons";
-  
   import "./Data.js";
-  import { Link } from "react-router-dom";
+  
   import './arjit.css'
-import { Data } from "./Data.js";
-import { useState } from "react";
-  const Arijith = () => {
-    const [datas, setData] = useState([]);
-    const [isInfiniteDisabled, setInfiniteDisabled] = useState(false);
-    const pushData=() =>{
-      const max = datas.length + 10;
-      const min = max - 10;
-      const newData=[];
 
-        if (datas.length === 40) {
-            setInfiniteDisabled(true);
-        } else {
-            for (let i = min; i < max; i++) {
-                newData.push(Data[i]);
-            }
-      setData([
-        ...datas,
-        ...newData
-      ]);
-    }
-  }
-    const loadData=(ev)=>{
-      console.log(datas.length);
-      setTimeout(()=>{
-        pushData();
-        console.log('Loaded data');
-        ev.target.complete();
-        if(datas.length===1000){
-          setInfiniteDisabled(true);
-        }
-      },2000);
-    }
-    useIonViewWillEnter(()=>{
-      pushData();
-    });
+const Profile = () => {
     return (
       <IonPage className="arjit">
  <IonToolbar className="toolbar-top " color="dark">
@@ -88,29 +45,9 @@ import { useState } from "react";
         </IonRow>
       </IonToolbar>
       <IonContent>
-<IonGrid >
-{datas.map((data) => {
-  return(
-    <IonCard className="kkk">
-<IonRow size="4" >
-<IonCol ><IonImg src={data.image}/></IonCol>
-<IonCol size="7">
-<IonRow className="kk">{data.song}</IonRow>
-<IonRow className="k">{data.singer}</IonRow>
-  </IonCol>
-  
-</IonRow>
-</IonCard>
-  )
-})
-}
-<IonInfiniteScroll onIonInfinite={loadData} threshold="100px" disabled={isInfiniteDisabled}>
-            <IonInfiniteScrollContent loadingSpinner="bubbles" loadingText="Loading more data...">
 
-            </IonInfiniteScrollContent>
-          </IonInfiniteScroll>
- 
-</IonGrid> 
+
+
 </IonContent>   
 
 <IonTabBar slot="bottom" className="tabbar-bottom">
@@ -139,4 +76,4 @@ import { useState } from "react";
 );
 };
 
-export default Arijith;
+export default Profile;

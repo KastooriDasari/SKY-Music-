@@ -32,12 +32,15 @@ import SignIn from "./pages/Signin";
 import SignUp from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Arijith from "./pages/arijith";
+import Profile from "./pages/Profile";
 
 import { Browser } from "@capacitor/browser";
 import { App as app } from "@capacitor/app";
 import { useEffect, useState } from "react";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "./firebase";
+import Library from "./pages/Library";
+import Favourites from "./pages/Favourites";
 
 setupIonicReact();
 
@@ -147,9 +150,21 @@ const App = () => {
             <Route exact path="/Arijith">
              <Arijith/>
             </Route>
-            <Route exact path="/signup">
+            <Route exact path="/Library">
+             <Library/>
+            </Route>
+            <Route exact path="/Favourites">
+             <Favourites/>
+            </Route>
+            <Route exact path="/Profile">
+             <Profile/>
+            </Route>
+
+            <Route exact path="/">
+              <Redirect to="/home" />
               <SignUp />
             </Route>
+
             <Route exact path="/">
               <Redirect to="/home" />
             </Route>

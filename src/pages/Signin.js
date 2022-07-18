@@ -19,9 +19,12 @@ import { UserAuth } from "../context/AuthContext";
 import img from "C:/Users/KastooriDasari/Desktop/sky-music/src/Images/logo-removebg-preview.png";
 import { logoFacebook, logoGoogle, logoTwitter } from "ionicons/icons";
 import {  useState } from "react";
-
+import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { alert } from "ionicons/icons";
 import { Link } from "react-router-dom";
+
+// const { login, logout, setGoogleUser, setIsGoogleLogin, facebookSignIn, updateStatus, setUser, addGoogleData, googleSignIn } =
+//     UserAuth();
 const SignIn = () => {
 
  
@@ -58,6 +61,21 @@ const SignIn = () => {
   const clearInputs = () => {
     setEmail('');
     setPassword('');
+  }
+  
+  const signInGoogle = async () => {
+    GoogleAuth.initialize();
+    const result = await GoogleAuth.signIn();
+    console.log(result);
+    // console.info('result', result);
+    if (result) {
+      router.push("/dashboard");
+      console.log(result);
+      // history.push({
+      //   pathname: '/home',
+      //   state: { name: result.name || result.displayName, image: result.imageUrl, email: result.email }
+      // });
+    }
   }
 
   const handleSignin = async (e) => {
@@ -157,25 +175,14 @@ const SignIn = () => {
               </Link>{" "}
             </IonLabel>
           </IonRow>
-         
-          <IonRow className="icons">
-            <IonIcon
+          <IonRow className="google-facebook">
            
-              style={{ fontSize: "30px", color: "orange" }}
-              icon={logoFacebook} 
-            />
-            &emsp;
-            <IonIcon
-           
-              style={{ fontSize: "30px", color: "orange" }}
-              icon={logoGoogle}
-            />
-            &emsp;
-            <IonIcon
-              
-              style={{ fontSize: "30px", color: "orange" }}
-              icon={logoTwitter}
-            />
+            <IonButton  fill="clear" onClick={(e)=>signInGoogle()}>
+              <IonIcon icon={logoGoogle}   style={{color: "orange"}} ></IonIcon>
+            </IonButton>
+            <IonButton  fill="clear">
+              <IonIcon icon={logoFacebook} style={{color: "orange"}}></IonIcon>
+            </IonButton>
           </IonRow>
         </IonGrid>
       </IonContent>

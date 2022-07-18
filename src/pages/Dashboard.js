@@ -23,19 +23,20 @@ import {
 
 } from "@ionic/react";
 import { Link } from "react-router-dom";
-
-// import img from "../Images/download (1).jpg"
 import {
   home,
   albumsOutline,
   heart,
   personAddOutline,
   menu,
+  card,
 } from "ionicons/icons";
-// import img2 from "../Images/logo-removebg-preview.png";
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 
 import "./Dashboard.css";
 const Dashboard = () => {
+ 
   return (
     <IonPage>
       {/* Toolbar */}
@@ -103,6 +104,7 @@ const Dashboard = () => {
           </IonRow>
 
           <IonRow className="dashboard-text">Recently Played</IonRow>
+         
           <IonRow className="ion-padding">
             <IonCol className="dashboard-cards" size="6" sizeSm="3" sizeMd="3">
               <IonCard className="cards"></IonCard>
@@ -120,7 +122,7 @@ const Dashboard = () => {
           <IonRow>
             <IonButton
               className="signout-btn ion-text-capitalize"
-              routerLink="/home"
+              routerLink="/signin"
             >
               SignOut
             </IonButton>
@@ -137,25 +139,24 @@ const Dashboard = () => {
 
       {/* TabBar */}
       <IonTabBar slot="bottom" className="tabbar-bottom">
-        <IonTabButton tab="tab1" href="/tab1">
+        <IonTabButton tab="tab1" routerLink="/dashboard">
           <IonIcon style={{ color: "orange" }} icon={home} />
 
           <IonLabel>Home</IonLabel>
         </IonTabButton>
-        <IonTabButton tab="tab2" href="/tab2">
+        <IonTabButton tab="tab2" routerLink="/Library">
           <IonIcon style={{ color: "orange" }} icon={albumsOutline} />
           <IonLabel>Library</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="tab2" href="/tab2">
+        <IonTabButton tab="tab3" routerLink="/Favourites">
           <IonIcon style={{ color: "orange" }} icon={heart} />
           <IonLabel>Favourites</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="tab3" href="/tab3">
+        <IonTabButton tab="tab4" routerLink="/Profile" >
           <IonIcon style={{ color: "orange" }} icon={personAddOutline} />
-
-          <IonLabel>Profile</IonLabel>
+          <IonLabel >Profile</IonLabel>
         </IonTabButton>
       </IonTabBar>
     </IonPage>
