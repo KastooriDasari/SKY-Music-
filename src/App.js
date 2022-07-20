@@ -37,7 +37,7 @@ import Profile from "./pages/Profile";
 import { Browser } from "@capacitor/browser";
 import { App as app } from "@capacitor/app";
 import { useEffect, useState } from "react";
-import { collection, doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import Library from "./pages/Library";
 import Favourites from "./pages/Favourites";
@@ -123,9 +123,8 @@ const App = () => {
     getConfigData();
     getAppInfo();
     //if (isPlatform("android")){
-
     // }
-  }, [0]);
+  });
 
   checkUpdate();
 
@@ -158,12 +157,10 @@ const App = () => {
             <Route exact path="/Profile">
               <Profile />
             </Route>
-
             <Route exact path="/">
               <Redirect to="/home" />
               <SignUp />
             </Route>
-
             <Route exact path="/">
               <Redirect to="/home" />
             </Route>

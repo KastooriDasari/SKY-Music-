@@ -14,7 +14,7 @@
 }
 .top-img{
  margin:auto;
- margin-top: 230px;
+ margin-top: 220px;
  /* size: 100px!important; */
  width: 200px !important;
  height: 200px !important;
@@ -22,11 +22,11 @@
 .title{
     display: flex;
     justify-content: center;
-    margin:auto;
+    /* margin:auto; */
     font-size: 40px;
     font-weight: 500;
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 .sub-title
 {

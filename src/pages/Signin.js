@@ -17,24 +17,22 @@ import {
 import "./Signin.css";
 import { UserAuth } from "../context/AuthContext";
 import img from "C:/Users/KastooriDasari/Desktop/sky-music/src/Images/logo-removebg-preview.png";
-import { logoFacebook, logoGoogle, logoTwitter } from "ionicons/icons";
-import {  useState } from "react";
-import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
+import { logoFacebook, logoGoogle, } from "ionicons/icons";
+import { useState } from "react";
+import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
 import { alert } from "ionicons/icons";
 import { Link } from "react-router-dom";
 
 // const { login, logout, setGoogleUser, setIsGoogleLogin, facebookSignIn, updateStatus, setUser, addGoogleData, googleSignIn } =
 //     UserAuth();
 const SignIn = () => {
-
- 
-  const { signIn, user } = UserAuth();
+  const { signIn,  } = UserAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [present, dismiss] = useIonToast();
+  const [ setError] = useState("");
+  const [present] = useIonToast();
   const [presentAlert] = useIonAlert();
-  const [showPresent,showDismiss] = useIonLoading();
+  const [showPresent, showDismiss] = useIonLoading();
 
   async function handleButtonClick(message) {
     present({
@@ -59,10 +57,10 @@ const SignIn = () => {
   }
   const router = useIonRouter();
   const clearInputs = () => {
-    setEmail('');
-    setPassword('');
-  }
-  
+    setEmail("");
+    setPassword("");
+  };
+
   const signInGoogle = async () => {
     GoogleAuth.initialize();
     const result = await GoogleAuth.signIn();
@@ -71,9 +69,8 @@ const SignIn = () => {
     if (result) {
       router.push("/dashboard");
       console.log(result);
-      
     }
-  }
+  };
 
   const handleSignin = async (e) => {
     var atposition = email.indexOf("@");
@@ -90,17 +87,15 @@ const SignIn = () => {
       handleButtonClick("Please enter correct email");
     } else {
       try {
-
         showPresent({
-          message: 'Please wait...',
+          message: "Please wait...",
           duration: 1000,
-    
-        })
+        });
 
         await signIn(email, password);
         handleButtonClick("Login successful");
         clearInputs();
-       
+
         router.push("/dashboard");
       } catch (e) {
         setError(e.message);
@@ -135,7 +130,7 @@ const SignIn = () => {
               placeholder="please enter your email"
             ></IonInput>
           </IonRow>
-        
+
           <IonRow className="content-grid-row4">
             <IonInput
               className="password"
@@ -145,40 +140,34 @@ const SignIn = () => {
               placeholder="please enter your password"
             ></IonInput>
           </IonRow>
-        
+
           <IonRow className="content-grid-row5">
-            <IonCol >
-            <IonButton
-              className="signin-btn ion-text-capitalize" 
-              onClick={handleSignin}
-            >
-              SignIn
-            </IonButton>
+            <IonCol>
+              <IonButton
+                className="signin-btn ion-text-capitalize"
+                onClick={handleSignin}
+              >
+                SignIn
+              </IonButton>
             </IonCol>
-            {/* <IonCol size="md">
-            <IonButton  
-            className="signout-btn ion-text-capitalize"
-            onClick={handleSignout}
-          >
-            SignOut
-            </IonButton>
-            </IonCol> */}
-            </IonRow>
+          </IonRow>
           <IonRow className="text">
             <IonLabel className="text3">
               Don't have account ?{" "}
-              <Link to="/signup" className="link"  onClick={clearInputs}>
+              <Link to="/signup" className="link" onClick={clearInputs}>
                 Sign Up
               </Link>{" "}
             </IonLabel>
           </IonRow>
           <IonRow className="google-facebook">
-           
-            <IonButton  fill="clear" onClick={(e)=>signInGoogle()}>
-              <IonIcon icon={logoGoogle}   style={{color: "orange"}} ></IonIcon>
+            <IonButton fill="clear" onClick={(e) => signInGoogle()}>
+              <IonIcon icon={logoGoogle} style={{ color: "orange" }}></IonIcon>
             </IonButton>
-            <IonButton  fill="clear">
-              <IonIcon icon={logoFacebook} style={{color: "orange"}}></IonIcon>
+            <IonButton fill="clear">
+              <IonIcon
+                icon={logoFacebook}
+                style={{ color: "orange" }}
+              ></IonIcon>
             </IonButton>
           </IonRow>
         </IonGrid>

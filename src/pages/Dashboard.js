@@ -4,31 +4,26 @@ import {
   IonRow,
   IonIcon,
   IonCol,
-  IonInput,
   IonButton,
   IonLabel,
   IonTabButton,
   IonTabBar,
-  useIonRouter,
   IonGrid,
   IonImg,
   IonSearchbar,
   IonCard,
-  IonTabs,
   IonToolbar,
   IonAvatar,
-  IonList,
-  IonItem,
   IonText,
 } from "@ionic/react";
-import { Link } from "react-router-dom";
+
 import {
   home,
   albumsOutline,
   heart,
   personAddOutline,
   menu,
-  card,
+
 } from "ionicons/icons";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -101,7 +96,6 @@ const Dashboard = () => {
               <IonRow>
                 <IonAvatar className="avatar-image">
                   <LazyLoadImage
-                    
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE2eYYLUto_ljyKeKcPXrqRjjLeaOoBsAVrg&usqp=CAU "
                     routerLink="/Arijith"
                   ></LazyLoadImage>
@@ -122,25 +116,21 @@ const Dashboard = () => {
             <IonCol className="avatar-imgs " size="6" sizeSm="3" sizeMd="3">
               <IonRow>
                 <IonAvatar className="avatar-image">
-                  <LazyLoadImage
-                  
-                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIJNTLtJjzZYhf7eS0j1HxS2UnJR7HzDk4hg&usqp=CAU">
-                   </LazyLoadImage>
+                  <LazyLoadImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIJNTLtJjzZYhf7eS0j1HxS2UnJR7HzDk4hg&usqp=CAU"></LazyLoadImage>
                 </IonAvatar>
               </IonRow>
-             
-                <IonRow>
-                  <IonButton
-                    id="text-btns"
-                    className="aijith-btn ion-text-capitalize"
-                    routerLink="/arijith"
-                    fill="clear"
-                    color="light"
-                  >
-                    Sheya Goshal
-                  </IonButton>
-                </IonRow>
-              
+
+              <IonRow>
+                <IonButton
+                  id="text-btns"
+                  className="aijith-btn ion-text-capitalize"
+                  routerLink="/arijith"
+                  fill="clear"
+                  color="light"
+                >
+                  Sheya Goshal
+                </IonButton>
+              </IonRow>
             </IonCol>
             <IonCol className="avatar-imgs " size="6" sizeSm="3" sizeMd="3">
               <IonRow>
@@ -253,7 +243,7 @@ const Dashboard = () => {
           </IonRow>
 
           <IonRow className="dashboard-text">Recently Played</IonRow>
-          <IonRow className="ion-padding" >
+          <IonRow className="ion-padding">
             <Swiper
               spaceBetween={5}
               slidesPerView={3}
@@ -268,9 +258,12 @@ const Dashboard = () => {
                         <IonRow size="4" className="ion-justify-content-center">
                           <IonImg src={user.image}></IonImg>
                         </IonRow>
-                        <IonRow size="4" className=" ion-padding-top ion-justify-content-center">
+                        <IonRow
+                          size="4"
+                          className=" ion-padding-top ion-justify-content-center"
+                        >
                           <IonText
-                            style={{fontSize: "10px", fontWeight: "bold" }}
+                            style={{ fontSize: "10px", fontWeight: "bold" }}
                           >
                             {user.song}
                           </IonText>
@@ -288,7 +281,6 @@ const Dashboard = () => {
             </Swiper>
           </IonRow>
 
-      
           <IonRow>
             <IonButton
               className="signout-btn ion-text-capitalize"
@@ -317,7 +309,7 @@ const Dashboard = () => {
           <IonLabel>Favourites</IonLabel>
         </IonTabButton>
 
-        <IonTabButton tab="tab4" href="/Profile" >
+        <IonTabButton tab="tab4" href="/Profile">
           <IonIcon style={{ color: "orange" }} icon={personAddOutline} />
           <IonLabel>Profile</IonLabel>
         </IonTabButton>

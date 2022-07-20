@@ -2,10 +2,8 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
   height: 100vh;
   font-family: Calibri;
-  /* margin-top: 50px; */
 }
 .chevron-back-outline {
   color: #696460;
@@ -18,10 +16,7 @@
   color: orange;
   font-size: 20px;
   margin-left: 15px;
-  /* margin-top: 50px; */
-  /* height: 10vh!important; */
 }
-
 
 .dashboard-text {
   color: orange;
@@ -30,7 +25,6 @@
 }
 .cards {
   height: 10vh;
-  /* width:100px; */
   margin: auto;
   margin-bottom: 40px;
 }
@@ -40,25 +34,19 @@
 .toolbar-top {
   color: #696460;
 }
-/* .aijith-btn{
-    --background:#e08d21!important;
-    margin:auto;
-    height: 30px;
-   
-} */
+
 .row {
   margin-top: 20px;
   justify-content: center;
   display: flex;
   flex-direction: row;
 }
-.avatar-image{
-    width: 100px;
-    height:100px;
-    margin: auto;
-    
+.avatar-image {
+  width: 100px;
+  height: 100px;
+  margin: auto;
 }
-#text-btns{
-    margin: auto;
-    font-size: 10px;
+#text-btns {
+  margin: auto;
+  font-size: 10px;
 }
