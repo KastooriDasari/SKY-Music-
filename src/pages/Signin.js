@@ -16,15 +16,12 @@ import {
 } from "@ionic/react";
 import "./Signin.css";
 import { UserAuth } from "../context/AuthContext";
-import img from "C:/Users/KastooriDasari/Desktop/sky-music/src/Images/logo-removebg-preview.png";
+import img from "C:/Users/KastooriDasari/Desktop/sky-music/src/Images/Logo.png";
 import { logoFacebook, logoGoogle, } from "ionicons/icons";
 import { useState } from "react";
 import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
 import { alert } from "ionicons/icons";
 import { Link } from "react-router-dom";
-
-// const { login, logout, setGoogleUser, setIsGoogleLogin, facebookSignIn, updateStatus, setUser, addGoogleData, googleSignIn } =
-//     UserAuth();
 const SignIn = () => {
   const { signIn,  } = UserAuth();
   const [email, setEmail] = useState("");
@@ -65,7 +62,6 @@ const SignIn = () => {
     GoogleAuth.initialize();
     const result = await GoogleAuth.signIn();
     console.log(result);
-    // console.info('result', result);
     if (result) {
       router.push("/dashboard");
       console.log(result);
