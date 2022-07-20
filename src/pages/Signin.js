@@ -71,10 +71,7 @@ const SignIn = () => {
     if (result) {
       router.push("/dashboard");
       console.log(result);
-      // history.push({
-      //   pathname: '/home',
-      //   state: { name: result.name || result.displayName, image: result.imageUrl, email: result.email }
-      // });
+      
     }
   }
 

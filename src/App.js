@@ -5,7 +5,7 @@ import {
   setupIonicReact,
   useIonAlert,
   useIonToast,
-  isPlatform
+  isPlatform,
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import Home from "./pages/Home";
@@ -45,10 +45,9 @@ import Favourites from "./pages/Favourites";
 setupIonicReact();
 
 const App = () => {
-  const [updateDetails,setUpdateDetails] = useState({});
+  const [updateDetails, setUpdateDetails] = useState({});
   const [appVersion, setAppVersion] = useState("");
-  const updateRef= doc(db, "Sky-music",
-  "UM2TCbkYJXJaKqIhlOgk");
+  const updateRef = doc(db, "Sky-music", "UM2TCbkYJXJaKqIhlOgk");
 
   const [presentAlert] = useIonAlert();
   const [present] = useIonToast();
@@ -60,22 +59,22 @@ const App = () => {
       animated: true,
       duration: 2000,
       color: "white",
-      mode:'ios',
+      mode: "ios",
     });
   };
 
   const handleAlert = (msg, title, btn, appVersion) => {
     presentAlert({
-      header:title,
-      subHeader:`Version: ${appVersion}`,
+      header: title,
+      subHeader: `Version: ${appVersion}`,
       message: msg,
       buttons: [
         {
           text: btn,
-          role:"Download",
+          role: "Download",
           handler: async () => {
             handleToast("Download Clicked");
-            await Browser.open ({
+            await Browser.open({
               url: "https://play.google.com/store/apps/details?id=com.skymusicptg.app",
             });
           },
@@ -93,15 +92,15 @@ const App = () => {
   };
 
   const getConfigData = async () => {
-       const docSnap = await getDoc(updateRef);
-       if(docSnap.exists()) {
-        const data = docSnap.data();
-        console.log("Document data:" , docSnap.data());
-        setUpdateDetails(data.updateMsg);
-        setAppVersion(data.current);
-       }else{
-        console.log("No such document!");
-       }
+    const docSnap = await getDoc(updateRef);
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      console.log("Document data:", docSnap.data());
+      setUpdateDetails(data.updateMsg);
+      setAppVersion(data.current);
+    } else {
+      console.log("No such document!");
+    }
   };
 
   const checkUpdate = async () => {
@@ -114,24 +113,21 @@ const App = () => {
           const btn = updateDetails.btn;
           handleAlert(msg, title, btn, appVersion);
         }
-      } 
-    } 
-    catch (error) {
+      }
+    } catch (error) {
       handleAlert(error.message);
     }
   };
 
   useEffect(() => {
     getConfigData();
-    getAppInfo();  
+    getAppInfo();
     //if (isPlatform("android")){
-         
-   // }
+
+    // }
   }, [0]);
 
-    checkUpdate();
-
-
+  checkUpdate();
 
   return (
     <AuthContextProvider>
@@ -144,20 +140,23 @@ const App = () => {
             <Route exact path="/signin">
               <SignIn />
             </Route>
+            <Route exact path="/signup">
+              <SignUp />
+            </Route>
             <Route exact path="/dashboard">
               <Dashboard />
             </Route>
             <Route exact path="/Arijith">
-             <Arijith/>
+              <Arijith />
             </Route>
             <Route exact path="/Library">
-             <Library/>
+              <Library />
             </Route>
             <Route exact path="/Favourites">
-             <Favourites/>
+              <Favourites />
             </Route>
             <Route exact path="/Profile">
-             <Profile/>
+              <Profile />
             </Route>
 
             <Route exact path="/">
