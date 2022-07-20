@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import { UserAuth } from "../context/AuthContext";
-import img from "C:/Users/KastooriDasari/Desktop/sky-music/src/Images/Logo.png";
+import img from "C:/Users/KastooriDasari/Desktop/sky-music/src/Images/logo-removebg-preview.png";
 import { alert } from "ionicons/icons";
 const SignUp = () => {
   const [present] = useIonToast();
