@@ -33,7 +33,7 @@ const SignUp = () => {
   }
 
   const [presentAlert] = useIonAlert();
-  const [name, setName] = useState("");
+  const [ setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
@@ -87,7 +87,7 @@ const SignUp = () => {
         });
 
         await createUser(email, password);
-        handleButtonClick(name + " " + "user successfully signedup");
+        handleButtonClick( "user successfully signedup");
         clearInputs();
         router.push("/signin");
       } catch (e) {

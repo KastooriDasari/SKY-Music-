@@ -10,8 +10,6 @@ import {
   IonTabButton,
   IonTabBar,
   IonButton,
-  IonList,
-  IonItem,
   IonGrid,
   IonImg,
   IonCard,
@@ -24,12 +22,11 @@ import {
   albumsOutline,
   heart,
   personAddOutline,
-  menu,
   arrowBackOutline,
 } from "ionicons/icons";
 
 import "./Data.js";
-import { Link } from "react-router-dom";
+
 import "./arjit.css";
 import { Data } from "./Data.js";
 import { useState } from "react";
