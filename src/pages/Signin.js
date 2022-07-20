@@ -16,7 +16,7 @@ import {
 } from "@ionic/react";
 import "./Signin.css";
 import { UserAuth } from "../context/AuthContext";
-import img from "C:/Users/KastooriDasari/Desktop/sky-music/src/Images/logo-removebg-preview.png";
+import img from "../Images/Logo.png";
 import { logoFacebook, logoGoogle, } from "ionicons/icons";
 import { useState } from "react";
 import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
