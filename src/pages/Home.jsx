@@ -9,7 +9,7 @@ const Home = () => {
         <IonGrid className='content-grid'>
           <IonRow className='grid-row1'><IonImg src={img} alt=" " className='top-img'></IonImg></IonRow>
           <IonRow className='title'>SKY Music</IonRow>
-          <IonRow className='sub-title'>Music the voice of soul (modified)</IonRow>
+          <IonRow className='sub-title'>Music the voice of soul and mind </IonRow>
           <IonRow className='grid-row3' ><IonButton routerLink='/signin' className='grt-started-btn ion-text-capitalize'> Get Started</IonButton></IonRow>
         </IonGrid>
       </IonContent>
