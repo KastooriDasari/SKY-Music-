@@ -124,7 +124,7 @@ const App = () => {
     getAppInfo();
     //if (isPlatform("android")){
     // }
-  });
+  },[]);
 
   checkUpdate();
 
