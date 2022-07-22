@@ -17,7 +17,7 @@ import {
 import "./Signin.css";
 import { UserAuth } from "../context/AuthContext";
 import img from "C:/Users/KastooriDasari/Desktop/sky-music/src/Images/logo-removebg-preview.png";
-import { logoFacebook, logoGoogle, logoTwitter } from "ionicons/icons";
+import { logoFacebook, logoGoogle, } from "ionicons/icons";
 import {  useState } from "react";
 import { GoogleAuth } from '@codetrix-studio/capacitor-google-auth';
 import { alert } from "ionicons/icons";
