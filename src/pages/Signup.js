@@ -15,7 +15,7 @@ import {
 import "./Signup.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
+import "./Signin.js";
 import { UserAuth } from "../context/AuthContext";
 import img from "../Images/Logo.png";
 import { alert } from "ionicons/icons";
@@ -73,7 +73,11 @@ const SignUp = () => {
       handleButtonClick("Fill the required fields");
     } else if (password.length < 6) {
       handleButtonClick("password must be altest 6 characters");
-    } else if (
+    } else if(password ===cpassword)
+    {
+      handleButtonClick("password and confirm password are not matching")
+    }
+    else if (
       atposition < 1 ||
       dotposition < atposition + 2 ||
       dotposition + 2 >= email.length

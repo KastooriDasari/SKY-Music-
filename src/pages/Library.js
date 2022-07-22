@@ -52,22 +52,22 @@ const Library = () => {
 </IonContent>   
 
 <IonTabBar slot="bottom" className="tabbar-bottom">
-<IonTabButton tab="tab1" href="/tab1">
+<IonTabButton tab="tab1" href="Dashboard">
   <IonIcon style={{ color: "orange" }} icon={home} />
 
   <IonLabel>Home</IonLabel>
 </IonTabButton>
-<IonTabButton tab="tab2" href="/tab2">
+<IonTabButton tab="tab2" href="/Library">
   <IonIcon style={{ color: "orange" }} icon={albumsOutline} />
   <IonLabel>Library</IonLabel>
 </IonTabButton>
 
-<IonTabButton tab="tab2" href="/tab2">
+<IonTabButton tab="tab2" href="/Favourites">
   <IonIcon style={{ color: "orange" }} icon={heart} />
   <IonLabel>Favourites</IonLabel>
 </IonTabButton>
 
-<IonTabButton tab="tab3" href="/tab3">
+<IonTabButton tab="tab3" href="/Profile">
   <IonIcon style={{ color: "orange" }} icon={personAddOutline} />
 
   <IonLabel>Profile</IonLabel>

@@ -19,9 +19,10 @@ import { UserAuth } from "../context/AuthContext";
 import img from "../Images/Logo.png";
 import { logoFacebook, logoGoogle, } from "ionicons/icons";
 import { useState } from "react";
-import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
+// import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
 import { alert } from "ionicons/icons";
 import { Link } from "react-router-dom";
+
 const SignIn = () => {
   const { signIn,  } = UserAuth();
   const [email, setEmail] = useState("");
@@ -30,7 +31,7 @@ const SignIn = () => {
   const [present] = useIonToast();
   const [presentAlert] = useIonAlert();
   const [showPresent, showDismiss] = useIonLoading();
-
+  
   async function handleButtonClick(message) {
     present({
       message: message,
@@ -58,15 +59,15 @@ const SignIn = () => {
     setPassword("");
   };
 
-  const signInGoogle = async () => {
-    GoogleAuth.initialize();
-    const result = await GoogleAuth.signIn();
-    console.log(result);
-    if (result) {
-      router.push("/dashboard");
-      console.log(result);
-    }
-  };
+  // const signInGoogle = async () => {
+  //   GoogleAuth.initialize();
+  //   const result = await GoogleAuth.signIn();
+  //   console.log(result);
+  //   if (result) {
+  //     router.push("/dashboard");
+  //     console.log(result);
+  //   }
+  // };
 
   const handleSignin = async (e) => {
     var atposition = email.indexOf("@");
@@ -156,7 +157,8 @@ const SignIn = () => {
             </IonLabel>
           </IonRow>
           <IonRow className="google-facebook">
-            <IonButton fill="clear" onClick={(e) => signInGoogle()}>
+            <IonButton fill="clear" >
+            {/* onClick={(e) => signInGoogle()} */}
               <IonIcon icon={logoGoogle} style={{ color: "orange" }}></IonIcon>
             </IonButton>
             <IonButton fill="clear">

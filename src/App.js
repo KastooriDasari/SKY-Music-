@@ -32,6 +32,7 @@ import SignIn from "./pages/Signin";
 import SignUp from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Arijith from "./pages/arijith";
+import Shreyagoshal from "./pages/shreyagoshal";
 import Profile from "./pages/Profile";
 
 import { Browser } from "@capacitor/browser";
@@ -122,9 +123,8 @@ const App = () => {
   useEffect(() => {
     getConfigData();
     getAppInfo();
-    //if (isPlatform("android")){
-    // }
-  });
+    
+  },[]);
 
   checkUpdate();
 
@@ -139,7 +139,7 @@ const App = () => {
             <Route exact path="/signin">
               <SignIn />
             </Route>
-            <Route exact path="/signup">
+            <Route exact path="/Signup">
               <SignUp />
             </Route>
             <Route exact path="/dashboard">
@@ -147,6 +147,9 @@ const App = () => {
             </Route>
             <Route exact path="/Arijith">
               <Arijith />
+            </Route>
+            <Route exact path="/Shreyagoshal">
+              <Shreyagoshal />
             </Route>
             <Route exact path="/Library">
               <Library />

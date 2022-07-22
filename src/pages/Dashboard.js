@@ -124,7 +124,7 @@ const Dashboard = () => {
                 <IonButton
                   id="text-btns"
                   className="aijith-btn ion-text-capitalize"
-                  routerLink="/arijith"
+                  routerLink="/Shreyagoshal"
                   fill="clear"
                   color="light"
                 >
@@ -281,14 +281,14 @@ const Dashboard = () => {
             </Swiper>
           </IonRow>
 
-          <IonRow>
+          {/* <IonRow>
             <IonButton
               className="signout-btn ion-text-capitalize"
               routerLink="/signin"
             >
               SignOut
             </IonButton>
-          </IonRow>
+          </IonRow> */}
         </IonGrid>
       </IonContent>
 
