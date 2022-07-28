@@ -16,7 +16,7 @@ import {
   IonItem,
   IonThumbnail,
   IonCol,
-  
+  useIonRouter
 } from "@ionic/react";
 import "./shreyagoshal.css";
 import {
@@ -39,10 +39,14 @@ import {
 import { db, auth } from "../firebase";
 import { useEffect, useState } from "react";
 
-const Shreyagoshal = () => {
+const Songs = () => {
   //const getDocs = doc(db, "image", "song" ,"singer");
   const [singer, setSinger] = useState([]);
-  const singerRef = collection(db, "category");
+  const singerRef = collection(db, "category",);
+  const router = useIonRouter();
+  const handleCategory = (path) => {
+    router.push(path);
+  };
 
   useEffect(() => {
     getDocs(singerRef).then((snapshort) => {
@@ -73,7 +77,7 @@ const Shreyagoshal = () => {
 
       <IonContent className="ion-content ">
         {singer.map((Data) => (
-          <IonList>
+          <IonList className="ion-margin"  onClick={() =>  handleCategory("/Play")}>
             <IonItem>
               <IonThumbnail className="ion-margin-end">
                 <IonImg  src={Data.image}></IonImg>
@@ -81,11 +85,10 @@ const Shreyagoshal = () => {
               <IonLabel>
                 <IonRow><IonText className="song">{Data.song}</IonText></IonRow>
                 <IonRow><IonText className="singer">{Data.singer}</IonText></IonRow>
+                
               </IonLabel>
             </IonItem>
           </IonList>
-        
-           
         ))}
       </IonContent>
 
@@ -114,4 +117,4 @@ const Shreyagoshal = () => {
     </IonPage>
   );
 };
-export default Shreyagoshal;
+export default Songs;

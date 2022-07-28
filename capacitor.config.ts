@@ -5,13 +5,6 @@ const config: CapacitorConfig = {
   appName: 'skymusic',
   webDir: 'build',
   bundledWebRuntime: false,
-  // server:{
-
-  //   url:"http://172.17.1.111:8100",
-
-  //   cleartext: true
-
-  //   },
   plugins: {
     SplashScreen: {
         launchShowDuration : 1000
@@ -23,6 +16,7 @@ const config: CapacitorConfig = {
     },
 
   }
+
 };
 
 export default config;

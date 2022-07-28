@@ -33,7 +33,20 @@ import SignUp from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Arijith from "./pages/arijith";
 import Shreyagoshal from "./pages/shreyagoshal";
+import Spb from "./pages/Spb";
 import Profile from "./pages/Profile";
+import Songs from "./pages/Songs";
+import Play from "./pages/Play";
+import Arijithsongslist from "./pages/Singers/Arijithsongslist";
+import Armaansongslist from "./pages/Singers/Armaansongslist";
+import Darshanravelsongslist from './pages/Singers/Darshanravelsongslist';
+import Hariharansongslist from './pages/Singers/Hariharansongslist';
+import LathaMangeshkarsongslist from './pages/Singers/LathaMangeshkarsongslist';
+import Nehakakkarsongslist from './pages/Singers/Nehakakkarsongslist';
+import Shreyasongslist from './pages/Singers/Shreyasongslist';
+import Spbsongslist from "./pages/Singers/Spbsongslist";
+
+
 
 import { Browser } from "@capacitor/browser";
 import { App as app } from "@capacitor/app";
@@ -42,6 +55,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "./firebase";
 import Library from "./pages/Library";
 import Favourites from "./pages/Favourites";
+
 
 setupIonicReact();
 
@@ -145,11 +159,61 @@ const App = () => {
             <Route exact path="/dashboard">
               <Dashboard />
             </Route>
+            <Route exact path="/Songs">
+              <Songs />
+            </Route>
+            <Route exact path="/Play">
+              <Play/>
+            </Route>
+            <Route exact path="/Arijithsongslist">
+              <Arijithsongslist/>
+            </Route>
+
+            <Route path="/Arijithsongslist" exact pages={Arijithsongslist}/>
+            <Route path="/Armaansongslist" exact pages={Armaansongslist}/>
+            <Route path="/Darshanravelsongslist" exact pages={Darshanravelsongslist}/>
+            <Route path="/Hariharansongslist" exact pages={Hariharansongslist}/>
+            <Route path="/LathaMangeshkarsongslist" exact pages={LathaMangeshkarsongslist}/>
+            <Route path="/Nehakakkarsongslist" exact pages={Nehakakkarsongslist}/>
+            <Route path="/Shreyasongslist" exact pages={Shreyasongslist}/>
+            <Route path="/Spbsongslist" exact pages={Spbsongslist}/>
+
+            <Route path="/Arijithsongslist/:id" exact>
+              <Arijithsongslist />
+            </Route>
+            <Route path="/Armaansongslist/:id" exact>
+              <Armaansongslist/>
+            </Route>
+            <Route path="/Darshanravelsongslist/:id" exact>
+              <Darshanravelsongslist/>
+            </Route>
+            <Route path="/Hariharansongslist/:id" exact>
+              <Hariharansongslist/>
+            </Route>
+
+            <Route path="/LathaMangeshkarsongslist/:id" exact>
+              <LathaMangeshkarsongslist/>
+            </Route>
+
+            <Route path="/Nehakakkarsongslist/:id" exact>
+              <Nehakakkarsongslist/>
+            </Route>
+
+            <Route path="/shreyasongslist/:id" exact>
+              <Shreyasongslist/>
+            </Route>
+            <Route path="/Spbsongslist/:id" exact>
+              <Spbsongslist/>
+            </Route>
+
             <Route exact path="/Arijith">
               <Arijith />
             </Route>
             <Route exact path="/Shreyagoshal">
               <Shreyagoshal />
+            </Route>
+            <Route exact path="/Spb">
+              <Spb/>
             </Route>
             <Route exact path="/Library">
               <Library />

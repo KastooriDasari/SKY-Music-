@@ -1,16 +1,19 @@
 import {
   IonContent,
   IonPage,
-IonToolbar,
+  IonToolbar,
   IonIcon,
   IonRow,
   IonCol,
-  IonSearchbar,
   IonLabel,
   IonTabButton,
   IonTabBar,
   IonButton,
-
+  IonGrid,
+  IonCard,
+  useIonAlert,
+  useIonRouter
+  
 } from "@ionic/react";
 import { useAuth } from "../context/AuthContext";
 
@@ -18,86 +21,98 @@ import {
   home,
   albumsOutline,
   heart,
-  personAddOutline,
-  arrowBackOutline, 
+  menu,
+  arrowBackOutline,
+  personCircleOutline,
 } from "ionicons/icons";
 import "./Data.js";
-import './arjit.css'
+import "./Profile.css";
 // import { Profile } from "console";
-const Profile= () => {
- 
-  const currentUser=useAuth();
-  const handleSignout=() =>{
-    
-  }
+const Profile = () => {
+  const currentUser = useAuth();
+  const [presentAlert] = useIonAlert();
+  const router=useIonRouter();
   
+  
+  const handleSignout= async (e) => {
+  
+    presentAlert({
+      header:'Signout',
+      subHeader:'Are you sure',
+      message:'You want to signout? ',
+      buttons:['YES'],
+    onClick:router.push("/signin"),
+      duration: 1000,
+    //  onDidPresent:router.push("/signin"),
+      })
+    
+      // router.push("/signin");
+  }
   return (
     <IonPage className="arjit">
-<IonToolbar className="toolbar-top " color="dark">
-      <IonRow className="first-row ion-justify-content-between ion-padding">
-      <IonCol size="2" sizeSm="2" sizeMd="0.5" className="menu-icon">
-         <IonButton  fill="clear" routerLink="/dashboard"> <IonIcon
+     <IonToolbar color="dark">
+  <IonButton slot="start" fill="clear"  routerLink="/Dashboard">
+          <IonIcon
             icon={arrowBackOutline}
-            className="ion-jutify-content-center ion-padding"
+            style={{ float: "right", fontSize: "20px" }}
+            color="warning"
+           
+          ></IonIcon>
+        </IonButton>
+      
+        <IonButton slot="end" fill="clear">
+          <IonIcon
+            icon={menu}
             style={{ float: "right", fontSize: "20px" }}
             color="warning"
           ></IonIcon>
-          </IonButton>
-        </IonCol>
-        <IonCol size="10" sizeSm="10" sizeMd="11.5">
-          <IonSearchbar className="ion-padding"></IonSearchbar>
-        </IonCol>
-       
-      </IonRow>
-    </IonToolbar>
+        </IonButton>
+      </IonToolbar>
 
-    <IonContent>
-      <IonRow>
-        
-        <IonLabel>
-          {currentUser?.email}
-        </IonLabel>
-      </IonRow>
-      <IonRow>
+      <IonContent>
+        <IonGrid className="profile-grid">
+          <IonCard className="profile-grid-card">
+            <IonRow className="profile-grid-card-row1 ion-margin" ><IonIcon icon={personCircleOutline}></IonIcon></IonRow>
+          <IonRow className="profile-grid-card-row2">
+            <IonLabel>{currentUser?.email}</IonLabel>
+          </IonRow>
+          <IonRow className="profile-grid-card-row3 ion-margin">
             <IonButton
               className="signout-btn ion-text-capitalize"
-              routerLink="/signin"
-              onClick={{handleSignout}}
+             onClick={handleSignout}
             >
               SignOut
             </IonButton>
           </IonRow>
-   {/* <IonGrid>
-   <IonRow>
-    <IonLabel>User Email: {{ currentUser?.email}}</IonLabel>
-   </IonRow>
-   </IonGrid> */}
-    </IonContent>   
+          </IonCard>
+         
+        </IonGrid>
+      </IonContent>
 
-<IonTabBar slot="bottom" className="tabbar-bottom">
-<IonTabButton tab="tab1" href="/Dashboard">
-<IonIcon style={{ color: "orange" }} icon={home} />
+      <IonTabBar slot="bottom" className="tabbar-bottom">
+        <IonTabButton tab="tab1" href="/Dashboard">
+          <IonIcon style={{ color: "orange" }} icon={home} />
 
-<IonLabel>Home</IonLabel>
-</IonTabButton>
-<IonTabButton tab="tab2" href="/Library">
-<IonIcon style={{ color: "orange" }} icon={albumsOutline} />
-<IonLabel>Library</IonLabel>
-</IonTabButton>
+          <IonLabel>Home</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="tab2" href="/Library">
+          <IonIcon style={{ color: "orange" }} icon={albumsOutline} />
+          <IonLabel>Library</IonLabel>
+        </IonTabButton>
 
-<IonTabButton tab="tab2" href="/Favourites">
-<IonIcon style={{ color: "orange" }} icon={heart} />
-<IonLabel>Favourites</IonLabel>
-</IonTabButton>
+        <IonTabButton tab="tab2" href="/Favourites">
+          <IonIcon style={{ color: "orange" }} icon={heart} />
+          <IonLabel>Favourites</IonLabel>
+        </IonTabButton>
 
-<IonTabButton tab="tab3" href="/Profile">
-<IonIcon style={{ color: "orange" }} icon={personAddOutline} />
+        <IonTabButton tab="tab3" href="/Profile">
+          <IonIcon style={{ color: "orange" }} icon={personCircleOutline} />
 
-<IonLabel>Profile</IonLabel>
-</IonTabButton>
-</IonTabBar>
-</IonPage>
-);
+          <IonLabel>Profile</IonLabel>
+        </IonTabButton>
+      </IonTabBar>
+    </IonPage>
+  );
 };
 
 export default Profile;

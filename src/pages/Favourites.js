@@ -16,8 +16,8 @@ import {
   home,
   albumsOutline,
   heart,
-  personAddOutline,
-
+  personCircleOutline,
+  menu,
   arrowBackOutline,
   
 } from "ionicons/icons";
@@ -28,23 +28,23 @@ import './arjit.css'
 const Library = () => {
   return (
     <IonPage className="arjit">
-<IonToolbar className="toolbar-top " color="dark">
-      <IonRow className="first-row ion-justify-content-between ion-padding">
-      <IonCol size="2" sizeSm="2" sizeMd="0.5" className="menu-icon">
-         <IonButton  fill="clear" routerLink="/dashboard"> <IonIcon
+<IonToolbar color="dark">
+  <IonButton slot="start" fill="clear" routerLink="/Dashboard">
+          <IonIcon
             icon={arrowBackOutline}
-            className="ion-jutify-content-center ion-padding"
             style={{ float: "right", fontSize: "20px" }}
             color="warning"
           ></IonIcon>
-          </IonButton>
-        </IonCol>
-        <IonCol size="10" sizeSm="10" sizeMd="11.5">
-          <IonSearchbar className="ion-padding"></IonSearchbar>
-        </IonCol>
-       
-      </IonRow>
-    </IonToolbar>
+        </IonButton>
+      
+        <IonButton slot="end" fill="clear">
+          <IonIcon
+            icon={menu}
+            style={{ float: "right", fontSize: "20px" }}
+            color="warning"
+          ></IonIcon>
+        </IonButton>
+      </IonToolbar>
     <IonContent>
 
 
@@ -52,7 +52,7 @@ const Library = () => {
 </IonContent>   
 
 <IonTabBar slot="bottom" className="tabbar-bottom">
-<IonTabButton tab="tab1" href="Dashboard">
+<IonTabButton tab="tab1" href="/Dashboard">
 <IonIcon style={{ color: "orange" }} icon={home} />
 
 <IonLabel>Home</IonLabel>
@@ -68,7 +68,7 @@ const Library = () => {
 </IonTabButton>
 
 <IonTabButton tab="tab3" href="/Profile">
-<IonIcon style={{ color: "orange" }} icon={personAddOutline} />
+<IonIcon style={{ color: "orange" }} icon={personCircleOutline} />
 
 <IonLabel>Profile</IonLabel>
 </IonTabButton>

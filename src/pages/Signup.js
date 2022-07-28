@@ -33,7 +33,7 @@ const SignUp = () => {
   }
 
   const [presentAlert] = useIonAlert();
-  const [ setName] = useState("");
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCPassword] = useState("");
@@ -52,7 +52,7 @@ const SignUp = () => {
     });
   }
   const clearInputs = () => {
-    setName("");
+  
     setEmail("");
     setPassword("");
   };
@@ -73,7 +73,7 @@ const SignUp = () => {
       handleButtonClick("Fill the required fields");
     } else if (password.length < 6) {
       handleButtonClick("password must be altest 6 characters");
-    } else if(password ===cpassword)
+    } else if(password !==cpassword)
     {
       handleButtonClick("password and confirm password are not matching")
     }

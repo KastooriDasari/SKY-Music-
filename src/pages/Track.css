@@ -1,0 +1,12 @@
+.song{
+    font-size: 13px;
+ margin-bottom: 4px;
+ color: black;
+}
+.singer{
+    font-size: 8px;
+}
+.avatar-imgs{
+   width: 20px;
+   height: 20px;
+}

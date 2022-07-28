@@ -1,5 +1,5 @@
 .signup-grid-in{
-    text-align: center;
+    /* text-align: center; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -8,9 +8,9 @@
     margin-top: 70px;
 }
 .signup-grid-row2{
-    color: white;
+    color: black;
     justify-content: center;
-    font-size: 25px;
+    font-size: 18px;
 }
 .email{
     margin-bottom: 20px;
@@ -20,14 +20,15 @@
 }
 
 .cpassword{
-    --background:#e08d21!important;
+    /* --background:#e08d21!important; */
+    border:solid black 1px;
     margin-right: 20px;
   margin-left: 20px;
-
+  font-size: x-small;
   margin-bottom: 20px;
-    height: 30px;
-    color: white;
-    border-radius: 3px;
+    height: 27px;
+    color: black;
+    border-radius: 15px;
  
 }
 .signup-grid-row8{
@@ -43,7 +44,8 @@
   
 }
 .signup-grid-row9{
-    color: white;
+    font-size: small;
+    color: black;
     justify-content: center;
     margin-top: 5px
 }

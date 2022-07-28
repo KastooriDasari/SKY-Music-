@@ -2,38 +2,46 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  font-family: Calibri;
+  
+  /* height: 100vh; */
+  font-style: normal;
+  /* font-family: Calibri; */
 }
-.chevron-back-outline {
+/* .chevron-back-outline {
   color: #696460;
-}
+} */
 .ion-content {
-  --background: #696460 !important;
+  --background:white!important;
 }
 
 .dashboard-row1 {
-  color: orange;
+  color:black;
   font-size: 20px;
   margin-left: 15px;
+  font-weight: bold;
 }
 
 .dashboard-text {
-  color: orange;
+  color: black;
   font-size: 20px;
   margin-left: 15px;
 }
+.singers-cards{
+  --background: transparent;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
 .cards {
-  height: 10vh;
-  margin: auto;
-  margin-bottom: 40px;
+  /* height: 20vh; */
+  /* margin: auto; */
+  /* margin-bottom: 30px; */
 }
-.signout-btn {
+/* .signout-btn {
   margin: auto;
-}
-.toolbar-top {
+} */
+/* .toolbar-top {
   color: #696460;
-}
+} */
 
 .row {
   margin-top: 20px;
@@ -42,11 +50,17 @@
   flex-direction: row;
 }
 .avatar-image {
-  width: 100px;
-  height: 100px;
+  width: 90px;
+  height: 90px;
   margin: auto;
 }
 #text-btns {
   margin: auto;
   font-size: 10px;
+  color:black;
+}
+.avatar-imgs{
+  /* height: 50vh; */
+  margin: auto;
+  margin-bottom: 30px;
 }

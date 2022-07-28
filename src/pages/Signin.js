@@ -150,7 +150,7 @@ const SignIn = () => {
           </IonRow>
           <IonRow className="text">
             <IonLabel className="text3">
-              Don't have account ?{" "}
+              Don't have account ? &nbsp;{" "}
               <Link to="/signup" className="link" onClick={clearInputs}>
                 Sign Up
               </Link>{" "}

@@ -1,80 +1,119 @@
 import {
-    IonContent,
-    IonPage,
+  IonContent,
+  IonPage,
+  IonRow,
+  IonIcon,
+  
+  IonLabel,
+  IonTabButton,
+  IonTabBar,
+  IonButton,
   IonToolbar,
-    IonIcon,
-    IonRow,
-    IonCol,
-    IonSearchbar,
-    IonLabel,
-    IonTabButton,
-    IonTabBar,
-    IonButton,
-   
-  } from "@ionic/react";
-  import {
-    home,
-    albumsOutline,
-    heart,
-    personAddOutline,
-  
-    arrowBackOutline,
-    
-  } from "ionicons/icons";
-  import "./Data.js";
-  
-  import './arjit.css'
+ 
+  IonImg,
+  IonText,
+  IonList,
+  IonItem,
+  IonThumbnail,
+  IonCol,
+  useIonRouter
+} from "@ionic/react";
+import "./shreyagoshal.css";
+import {
+  home,
+  albumsOutline,
+  heart,
+  personCircleOutline,
+  menu,
+} from "ionicons/icons";
+import {
+  collection,
+  getDocs,
+  // doc,
+  // deleteDoc,
+  // orderBy,
+  // onSnapshot,
+  // query,
+} from "firebase/firestore";
 
-const Library = () => {
-    return (
-      <IonPage className="arjit">
- <IonToolbar className="toolbar-top " color="dark">
-        <IonRow className="first-row ion-justify-content-between ion-padding">
-        <IonCol size="2" sizeSm="2" sizeMd="0.5" className="menu-icon">
-           <IonButton  fill="clear" routerLink="/dashboard"> <IonIcon
-              icon={arrowBackOutline}
-              className="ion-jutify-content-center ion-padding"
-              style={{ float: "right", fontSize: "20px" }}
-              color="warning"
-            ></IonIcon>
-            </IonButton>
-          </IonCol>
-          <IonCol size="10" sizeSm="10" sizeMd="11.5">
-            <IonSearchbar className="ion-padding"></IonSearchbar>
-          </IonCol>
-         
-        </IonRow>
+import { db, auth } from "../firebase";
+import { useEffect, useState } from "react";
+
+const Shreyagoshal = () => {
+  //const getDocs = doc(db, "image", "song" ,"singer");
+  const [singer, setSinger] = useState([]);
+  const singerRef = collection(db, "category",);
+  const router = useIonRouter();
+  const handleCategory = (path) => {
+    router.push(path);
+  };
+
+  useEffect(() => {
+    getDocs(singerRef).then((snapshort) => {
+      let singers = [];
+      snapshort.docs.forEach((doc) => {
+        singers.push({ ...doc.data(), id: doc.id });
+      });
+      console.log(singers);
+      setSinger(singers);
+    });
+  }, []);
+
+  return (
+    <IonPage className="">
+      {/* Toolbar */}
+      <IonToolbar color="dark" className="">
+        <IonText className="ion-padding" color="warning">
+          Sky-Music
+        </IonText>
+        <IonButton slot="end" fill="clear">
+          <IonIcon
+            icon={menu}
+            style={{ float: "right", fontSize: "20px" }}
+            color="warning"
+          ></IonIcon>
+        </IonButton>
       </IonToolbar>
-      <IonContent>
 
+      <IonContent className="ion-content ">
+        {singer.map((Data) => (
+          <IonList className="ion-margin"  onClick={() =>  handleCategory("/Songs")}>
+            <IonItem>
+              <IonThumbnail className="ion-margin-end">
+                <IonImg  src={Data.image}></IonImg>
+              </IonThumbnail>
+              <IonLabel>
+                <IonRow><IonText className="song">{Data.song}</IonText></IonRow>
+                <IonRow><IonText className="singer">{Data.singer}</IonText></IonRow>
+              </IonLabel>
+            </IonItem>
+          </IonList>
+        ))}
+      </IonContent>
 
+      {/* TabBar */}
+      <IonTabBar slot="bottom" className="tabbar-bottom">
+        <IonTabButton tab="tab1" href="/dashboard">
+          <IonIcon style={{ color: "orange" }} icon={home} />
 
-</IonContent>   
+          <IonLabel>Home</IonLabel>
+        </IonTabButton>
+        <IonTabButton tab="tab2" href="/Library">
+          <IonIcon style={{ color: "orange" }} icon={albumsOutline} />
+          <IonLabel>Library</IonLabel>
+        </IonTabButton>
 
-<IonTabBar slot="bottom" className="tabbar-bottom">
-<IonTabButton tab="tab1" href="Dashboard">
-  <IonIcon style={{ color: "orange" }} icon={home} />
+        <IonTabButton tab="tab3" href="/Favorites">
+          <IonIcon style={{ color: "orange" }} icon={heart} />
+          <IonLabel>Favourites</IonLabel>
+        </IonTabButton>
 
-  <IonLabel>Home</IonLabel>
-</IonTabButton>
-<IonTabButton tab="tab2" href="/Library">
-  <IonIcon style={{ color: "orange" }} icon={albumsOutline} />
-  <IonLabel>Library</IonLabel>
-</IonTabButton>
-
-<IonTabButton tab="tab2" href="/Favourites">
-  <IonIcon style={{ color: "orange" }} icon={heart} />
-  <IonLabel>Favourites</IonLabel>
-</IonTabButton>
-
-<IonTabButton tab="tab3" href="/Profile">
-  <IonIcon style={{ color: "orange" }} icon={personAddOutline} />
-
-  <IonLabel>Profile</IonLabel>
-</IonTabButton>
-</IonTabBar>
-</IonPage>
-);
+        <IonTabButton tab="tab4" href="/Profile">
+          <IonIcon style={{ color: "orange" }} icon={personCircleOutline} />
+          <IonLabel>Profile</IonLabel>
+        </IonTabButton>
+      </IonTabBar>
+    </IonPage>
+  );
 };
-
-export default Library;
+export default Shreyagoshal;
